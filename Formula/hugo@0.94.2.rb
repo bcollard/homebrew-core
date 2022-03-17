@@ -1,8 +1,8 @@
-class HugoAT0912 < Formula
+class HugoAT0942 < Formula
   desc "Configurable static site generator"
   homepage "https://gohugo.io/"
-  url "https://github.com/gohugoio/hugo/archive/v0.91.2.tar.gz"
-  sha256 "a749485225d682dee43ea6a0644d5bd2e587c0535508be90e679b21e4553f8e9"
+  url "https://github.com/gohugoio/hugo/archive/v0.94.2.tar.gz"
+  sha256 "315bc0d22977e84ba25125b1d23333648e36194a46a4d6ae4f4c6c683dc8979c"
   license "Apache-2.0"
   head "https://github.com/gohugoio/hugo.git", branch: "master"
 
@@ -10,10 +10,6 @@ class HugoAT0912 < Formula
 
   def install
     system "go", "build", *std_go_args(ldflags: "-s -w"), "-tags", "extended"
-
-    # Build bash completion
-    system bin/"hugo", "gen", "autocomplete", "--completionfile=hugo.sh"
-    bash_completion.install "hugo.sh"
 
     # Build man pages; target dir man/ is hardcoded :(
     (Pathname.pwd/"man").mkpath
